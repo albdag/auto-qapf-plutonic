@@ -1,3 +1,14 @@
+"""
+Auto-QAPF Plutonic is a standalone Python application. Its main features include:
+ - Classify plutonic rocks based on modal mineralogy (QAPF diagram) following IUGS guidelines.
+ - Color index prefixes and special rock nomenclatures.
+ - Ultramafic and gabbroic rocks classification diagrams.
+ - Plot rock in the respective classification diagrams.
+
+Author: @albdag
+Version: v2.0.0
+Dependencies: PyQt5, python-ternary, matplotlib
+"""
 
 #Librerie e moduli importati-------------------------------------------------------------------------------------------------------------------------------------------
 import sys
