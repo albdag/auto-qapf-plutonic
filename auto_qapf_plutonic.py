@@ -1,16 +1,21 @@
 
 #Librerie e moduli importati-------------------------------------------------------------------------------------------------------------------------------------------
 
-import PyQt5.QtCore as QC
+import sys
+from pathlib import Path
+import resources.resources
+
 import PyQt5.QtGui as QG
 import PyQt5.QtWidgets as QW
-import sys, ternary
+
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt import NavigationToolbar2QT as NavigationToolbar
 from matplotlib.legend import Legend
+import ternary
 
 
+# Constants--------------------------------------------------------------------
 FOIDS = [
     "Nepheline", "Leucite", "Kalsilite", "Analcime", "Sodalite", "Nosean",
     "Hauyne", "Cancrinite", "Pseudo-leucite"
@@ -28,6 +33,8 @@ MINERAL_ABBREVIATIONS = {
     'Orthopyroxene': 'OPX',
     'Spinel': 'SP',
 }
+
+ICONS_DIR = Path(':') / 'icons' # using QResources
 
 #FUNZIONI PER IL PLOTTING DEI DIAGRAMMI----------------------------------------------(ternary-matplotlib)--------------------------------------------------------------
 
@@ -482,7 +489,7 @@ class Window(QW.QMainWindow):
             self.setGeometry(30,75, 1300,600)
             self.showMaximized()
             self.setWindowTitle("Auto - QAPF Plutonic")
-            self.setWindowIcon(QG.QIcon("QAPF.ico"))
+            self.setWindowIcon(QG.QIcon(str(ICONS_DIR / "QAPF.png")))
             self.statusBar()
 
             # Per aprire un file di testo (from ArcGIS MLC)
