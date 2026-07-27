@@ -8,7 +8,7 @@ The nomenclature follows the official IUGS guidelines, as provided by [Le Maitre
 
 ### Windows
 
-Download the dedicated executable. No installation is required.
+Download the dedicated executable for the [latest version](https://github.com/albdag/auto-qapf-plutonic/releases/latest). No installation is required.
 
 ### Linux & macOS
 
