@@ -2073,6 +2073,17 @@ Enjoy the tool!"
 
 
 if __name__ == "__main__":
+
+    APPNAME = "Auto-QAPF Plutonic"
+    VERSION = "2.0.0"
+
+    try:
+        from ctypes import windll  # Only exists on Windows.
+        myappid = f'{APPNAME}.{VERSION}' 
+        windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+    except ImportError:
+        pass
+
     app = QW.QApplication(sys.argv)
     main = Window()
     main.show()
