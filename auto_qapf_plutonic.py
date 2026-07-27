@@ -1,6 +1,5 @@
 
 #Librerie e moduli importati-------------------------------------------------------------------------------------------------------------------------------------------
-
 import sys
 from pathlib import Path
 import resources.resources
@@ -64,14 +63,14 @@ def PQA_plot(ax, gridon, tickson):
     for hl in (horiz_lines):
         tax.horizontal_line(hl, color='black')
 
-    lines_ends = (((10,0,90), (4,60,36)),                                       # P rateo = 10
-                  ((35,0,65), (28,20,52)),                                      # P rateo = 35 (straight part of the line)
-                  ((65,0,35), (26,60,14)),                                      # P rateo = 65
-                  ((90,0,10), (36,60,4)))                                       # P rateo = 90
+    lines_ends = (((10,0,90), (4,60,36)),                                       # P ratio = 10
+                  ((35,0,65), (28,20,52)),                                      # P ratio = 35 (straight part of the line)
+                  ((65,0,35), (26,60,14)),                                      # P ratio = 65
+                  ((90,0,10), (36,60,4)))                                       # P ratio = 90
     for le in lines_ends:
         tax.line(le[0], le[1], color='black')
 
-    tax.line((28,20,52), (14,60,26),                                            # P rateo = 35 (dotted part of the line)
+    tax.line((28,20,52), (14,60,26),                                            # P ratio = 35 (dotted part of the line)
              color='black', linestyle="--", linewidth=0.5)
 
     # Plotting fields numbers
@@ -135,11 +134,11 @@ def PFA_plot(ax, gridon, tickson):
     tax.horizontal_line(10, color='black')
     tax.horizontal_line(60, color='black')
 
-    lines_ends = (((10,0,90), (4,60,36)),                                       # P rateo = 10
-                  ((35,0,65), (63/2.,10,117/2.)),                               # P rateo = 35
-                  ((45,10,45), (20,60,20)),                                     # P rateo = 50
-                  ((65,0,35), (117/2.,10,63/2.)),                               # P rateo = 65
-                  ((90,0,10), (36,60,4)))                                       # P rateo = 90
+    lines_ends = (((10,0,90), (4,60,36)),                                       # P ratio = 10
+                  ((35,0,65), (63/2.,10,117/2.)),                               # P ratio = 35
+                  ((45,10,45), (20,60,20)),                                     # P ratio = 50
+                  ((65,0,35), (117/2.,10,63/2.)),                               # P ratio = 65
+                  ((90,0,10), (36,60,4)))                                       # P ratio = 90
     for le in lines_ends:
         tax.line(le[0], le[1], color='black')
 
@@ -550,7 +549,7 @@ class Window(QW.QMainWindow):
             ITshow_guideAction.setStatusTip("Show a simple guide to the program (italian version).")
             ITshow_guideAction.triggered.connect(self.show_guideIT)
 
-            # Creazione del menu 
+            # Creazione del menu
             # File = (apri file + cancella cronologia + esci dal programma),
             # Edit = (cambia colore + cambia font + Plots submenu = (griglia grafico, ticks grafico)),
             # Help = (apri guida_EN + (apri guida_IT)
@@ -750,7 +749,7 @@ class Window(QW.QMainWindow):
             txt = "Please select the predominant foid in your sample"
             self.DialogWindow('INFO', "Choose the foid", txt)
 
-            while True:  
+            while True:
                 foid_name, ok = QW.QInputDialog.getItem(
                     self, "Predominant foid", "Foids list:", FOIDS, 0, False)
 
@@ -782,7 +781,7 @@ class Window(QW.QMainWindow):
                 "Ultramafic rocks diagrams",
                 "Insert the modal percentages (NOT recalculated) of the following minerals."
             )
-            amounts = dict().fromkeys(ULTRAMAFIC_MINERALS, 0.0) 
+            amounts = dict().fromkeys(ULTRAMAFIC_MINERALS, 0.0)
             tot = self.maf1
             while tot == self.maf1:
                 for m in amounts.keys():
@@ -1586,7 +1585,7 @@ Moreover note that if the average composition of plagioclase is an% = 10 - 30 (o
 
                 try:
                     pl_ratio = (pl_ric*100)/(kfel_ric+pl_ric)
-                except ZeroDivisionError:                                       # Se il denominatore e' 0 non mi serira' il plagioclase rateo (i.e. 100% di Q o F)
+                except ZeroDivisionError:                                       # Se il denominatore e' 0 non mi serira' il plagioclase ratio (i.e. 100% di Q o F)
                     pl_ratio = 0 # unused
 
                 note = ""
@@ -2062,7 +2061,8 @@ Enjoy the tool!"
             self.close_application()
 
 
-app = QW.QApplication(sys.argv)
-main = Window()
-main.show()
-sys.exit(app.exec_())
+if __name__ == "__main__":
+    app = QW.QApplication(sys.argv)
+    main = Window()
+    main.show()
+    sys.exit(app.exec_())
