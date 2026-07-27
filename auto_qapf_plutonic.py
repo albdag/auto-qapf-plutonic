@@ -8,9 +8,9 @@ import resources.resources
 import PyQt5.QtGui as QG
 import PyQt5.QtWidgets as QW
 
-import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt import NavigationToolbar2QT as NavigationToolbar
+from matplotlib.backends.backend_qt import NavigationToolbar2QT as NavTbar
 from matplotlib.legend import Legend
 import ternary
 
@@ -596,20 +596,22 @@ class Window(QW.QMainWindow):
 
 
             # 2.1.1 Plot1 Box (Primi Toolbar Matplotlib e Canvas)
-            self.figurePlot1, self.ax1 = plt.subplots(1,1)
+            self.figurePlot1 = Figure()
+            self.ax1 = self.figurePlot1.add_subplot(111)
             self.ax1.axis('off')
             self.canvas1 = FigureCanvas(self.figurePlot1)
-            self.mplToolbar1 = NavigationToolbar(self.canvas1, self)
+            self.mplToolbar1 = NavTbar(self.canvas1, self)
             customizeBtn = self.mplToolbar1.findChildren(QW.QAction)[8]
             self.mplToolbar1.removeAction(customizeBtn)
             plot1box = QW.QVBoxLayout()
             plot1box.addWidget(self.canvas1)
             plot1box.addWidget(self.mplToolbar1)
             # 2.1.2 Plot2 Box (Secondi Toolbar Matplotlib e Canvas)
-            self.figurePlot2, self.ax2 = plt.subplots(1,1)
+            self.figurePlot2 = Figure()
+            self.ax2 = self.figurePlot2.add_subplot(111)
             self.ax2.axis('off')
             self.canvas2 = FigureCanvas(self.figurePlot2)
-            self.mplToolbar2 = NavigationToolbar(self.canvas2, self)
+            self.mplToolbar2 = NavTbar(self.canvas2, self)
             customizeBtn = self.mplToolbar2.findChildren(QW.QAction)[8]
             self.mplToolbar2.removeAction(customizeBtn)
             plot2box = QW.QVBoxLayout()
